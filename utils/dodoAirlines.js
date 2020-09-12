@@ -5,9 +5,9 @@ const port = process.env.PORT || 3000;
 const host = `http://localhost:${port}`;
 
 const dodoTimeouts = {
-    short: 1000,
-    medium: 10000,
-    long: 12000,
+    short: 10000,
+    medium: 50000,
+    long: 120000,
 }
 
 const dodoRoutes = ({
