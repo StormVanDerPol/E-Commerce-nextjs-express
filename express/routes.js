@@ -1,9 +1,8 @@
-import express from "express";
-
-import me from "./routes/me.js";
-import login from "./routes/login.js";
-import signup from "./routes/signup.js";
-import products from "./routes/products.js";
+const express = require("express");
+const me = require("./routes/me.js");
+const login = require("./routes/login.js");
+const signup = require("./routes/signup.js");
+const products = require("./routes/products.js");
 
 const router = express.Router();
 
@@ -36,4 +35,4 @@ router.get("/products", async (req, res) => {
     await products(req, res);
 });
 
-export default router;
+module.exports = router;

@@ -1,11 +1,11 @@
-import tokenService from "../../utils/TokenService.js";
-import requestErrorHandler from "./requestErrorHandler.js";
+const tokenService = require("../../utils/TokenService.js");
+const requestErrorHandler = require("./requestErrorHandler.js");
 
-export default function (req, res, next) {
+module.exports = function (req, res, next) {
 
     try {
 
-        //Grab token from header
+        //Grab token  = require(header
         const signedToken = req.headers.authorization;
 
         if (signedToken) {
@@ -13,7 +13,7 @@ export default function (req, res, next) {
             const token = tokenService.verify(signedToken);
 
             if (token) {
-                //Case verified, fetch userid from the token
+                //Case verified, fetch userid  = require(the token
                 //then, generate new token.
                 const userid = token.userid;
                 const newToken = tokenService.create({
@@ -42,3 +42,4 @@ export default function (req, res, next) {
         requestErrorHandler(error, res);
     }
 }
+

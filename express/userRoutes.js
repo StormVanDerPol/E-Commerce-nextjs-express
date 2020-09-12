@@ -1,6 +1,6 @@
-import express from "express";
-import tokenFirewall from "./utils/tokenFirewall.js";
-import me from "./routes/me.js";
+const express = require("express");
+const tokenFirewall = require("./utils/tokenFirewall.js");
+const me = require("./routes/me.js");
 
 const router = express.Router();
 
@@ -11,4 +11,4 @@ router.get("/me", async (req, res) => {
     await me(req, res);
 })
 
-export default router;
+module.exports = router; 

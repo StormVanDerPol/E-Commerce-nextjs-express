@@ -1,9 +1,9 @@
-import { dodoFlight, dodoRoutes, dodoTimeouts } from "./dodoAirlines"
-import localStorageService from "./LocalStorageService";
+const { dodoFlight, dodoRoutes, dodoTimeouts } = require("./dodoAirlines")
+const localStorageService = require("./LocalStorageService.js");
 
 //Due for refactoring
 
-export const authService = {
+const authService = {
 
     //calls /api/v1/login and sets a cookie if login successful.
     login: async ({ username, password }) => {
@@ -36,6 +36,7 @@ export const authService = {
                         localStorageService.set('username', user.username);
                     }
 
+                    console.log('login works')
                     return 'LOGIN_OK';
                 }
             }
@@ -72,3 +73,5 @@ export const authService = {
         return 'SIGNUP_FAIL';
     },
 }
+
+module.exports = authService;

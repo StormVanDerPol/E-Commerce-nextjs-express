@@ -1,8 +1,8 @@
-import mongodb from "mongodb"
-import mongoService from "../../utils/MongoService.js";
-import requestErrorHandler from "./requestErrorHandler.js";
+const mongodb = require("mongodb");
+const { mongoService } = require("../../utils/MongoService.js");
+const requestErrorHandler = require("./requestErrorHandler.js");
 
-export default async function (req, res, next) {
+module.exports = async function (req, res, next) {
 
     try {
 

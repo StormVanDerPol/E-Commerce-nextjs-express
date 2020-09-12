@@ -1,4 +1,4 @@
-import { authService } from "../utils/AuthService";
+import authService from "../utils/AuthService";
 import { useEffect, useState } from "react";
 import localStorageService from "../utils/LocalStorageService";
 

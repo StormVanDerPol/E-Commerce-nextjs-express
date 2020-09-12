@@ -1,9 +1,9 @@
-import keys from "../keys.js";
-import CryptoJS from "crypto-js";
+const keys = require("../keys.js");
+const CryptoJS = require("crypto-js");
 
 //Due for refactoring, add bcrypt support
 
-export const cryptoHelper = {
+const cryptoHelper = {
 
     encrypt: (data) => {
         return CryptoJS.AES.encrypt(data, keys.password).toString();
@@ -27,3 +27,5 @@ export const cryptoHelper = {
         return JSON.parse(stringified);
     }
 }
+
+module.exports = cryptoHelper;

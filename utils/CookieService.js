@@ -36,4 +36,4 @@ class CookieService {
 
 const cookieService = new CookieService();
 
-export default cookieService;
+module.exports = cookieService;

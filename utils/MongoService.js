@@ -1,6 +1,6 @@
-import mongodb from "mongodb";
+const mongodb = require("mongodb");
 
-export const initMongoService = (url, database) => {
+const initMongoService = (url, database) => {
 
     const { MongoClient } = mongodb;
 
@@ -26,7 +26,10 @@ export const initMongoService = (url, database) => {
 
     return new MongoService(url, database);
 }
+//5A8hIquBWLmwvXm7
+const mongoService = initMongoService("mongodb://superuser:user@localhost:27017", "nextjs");
 
-const mongoService = initMongoService("mongodb://superuser:storm@localhost:27017", "nextjs");
-
-export default mongoService;
+module.exports = {
+    initMongoService,
+    mongoService,
+};

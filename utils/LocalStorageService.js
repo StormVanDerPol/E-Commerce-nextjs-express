@@ -42,4 +42,4 @@ class LocalStorageService {
 
 const localStorageService = new LocalStorageService();
 
-export default localStorageService;
+module.exports = localStorageService;
