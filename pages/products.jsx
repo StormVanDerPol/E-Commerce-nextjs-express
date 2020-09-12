@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Products.module.css'
 import { dodoFlight, dodoRoutes, dodoTimeouts } from '../utils/dodoAirlines';
 import NavBar from '../components/NavBar';
+import SecurityHeaders from '../components/SecurityHeaders';
 
 function Products({ products = 'loading', success }) {
 
@@ -43,7 +44,7 @@ function Products({ products = 'loading', success }) {
             <Head>
                 <title>Webshop name - Products</title>
                 <link rel="icon" href="/favicon.ico" />
-                <meta httpEquiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' clusterfuck.l55h1.mongodb.net"></meta>
+                <SecurityHeaders />
             </Head>
 
             <NavBar />

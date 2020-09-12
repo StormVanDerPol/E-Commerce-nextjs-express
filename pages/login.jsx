@@ -3,6 +3,7 @@ import styles from '../styles/NotFound.module.css'
 import { useState } from 'react'
 import authService from '../utils/AuthService'
 import NavBar from '../components/NavBar'
+import SecurityHeaders from '../components/SecurityHeaders'
 
 export default function Login() {
 
@@ -15,7 +16,8 @@ export default function Login() {
         <div>
             <Head>
                 <title>Webshop name - login</title>
-                <link rel="icon" href="/favicon.ico" /><meta httpEquiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' clusterfuck.l55h1.mongodb.net"></meta>
+                <link rel="icon" href="/favicon.ico" />
+                <SecurityHeaders />
             </Head>
 
             <NavBar />
