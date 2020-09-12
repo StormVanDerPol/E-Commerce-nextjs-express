@@ -7,10 +7,10 @@ Platform should include a proper Admin panel and the neccessary security measure
 Furthermore I plan to implement the Mollie library as a payment solution but I have yet to explore the nitty gritty.
 
 Running the dev server:
-npm run dev
+```npm run dev```
 
 Running the Express instance:
-npm run express
+```npm run express``` 
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
