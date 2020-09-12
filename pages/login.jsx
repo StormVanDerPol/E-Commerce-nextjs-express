@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/NotFound.module.css'
 import { useState } from 'react'
-import { authService } from '../utils/AuthService'
+import authService from '../utils/AuthService'
 import NavBar from '../components/NavBar'
 
 export default function Login() {

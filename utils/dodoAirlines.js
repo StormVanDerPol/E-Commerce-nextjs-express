@@ -1,15 +1,16 @@
-import Axios from "axios"
-import localStorageService from "./LocalStorageService";
+const Axios = require("axios");
+const localStorageService = require("./LocalStorageService");
 
-const host = 'http://localhost:8080';
+const port = process.env.PORT || 3000;
+const host = `http://localhost:${port}`;
 
-export const dodoTimeouts = {
+const dodoTimeouts = {
     short: 1000,
     medium: 10000,
     long: 12000,
 }
 
-export const dodoRoutes = ({
+const dodoRoutes = ({
 
     api: {
         v1: {
@@ -28,7 +29,7 @@ export const dodoRoutes = ({
     },
 })
 
-export const dodoFlight = async ({
+const dodoFlight = async ({
     method = 'get',
     url = dodoRoutes.api.v1.get.products,
     timeout = dodoTimeouts.short,
@@ -61,7 +62,7 @@ export const dodoFlight = async ({
         //Logging
         console.log('Landed!', response);
 
-        //Getting token from header
+        //Getting token  = require(header
         const token = response.headers.authorization;
 
         //Setting new token (Only request where document has already been defined will update the token)
@@ -94,4 +95,10 @@ export const dodoFlight = async ({
 
         return { data: { success: false, message: 'NO RESPONSE' } };
     }
+}
+
+module.exports = {
+    dodoFlight,
+    dodoRoutes,
+    dodoTimeouts,
 }

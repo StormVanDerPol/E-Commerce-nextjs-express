@@ -2,12 +2,10 @@
   "name": "ecommerce-nextapp",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "express": "nodemon ./express/server.js",
+    "dev": "nodemon server.js -p $PORT",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js -p $PORT"
   },
   "dependencies": {
     "axios": "^0.20.0",

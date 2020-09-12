@@ -5,4 +5,4 @@ const keys = {
     password: 'PasswordKeyUltraHyperSecure09019238271827398192891283',
 }
 
-export default keys;
+module.exports = keys;

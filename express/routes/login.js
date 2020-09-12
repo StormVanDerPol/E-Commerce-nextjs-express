@@ -1,9 +1,9 @@
-import mongoService from "../../utils/MongoService.js";
-import { cryptoHelper } from "../../utils/cryptoHelper.js";
-import tokenService from "../../utils/TokenService.js";
-import requestErrorHandler from "../utils/requestErrorHandler.js";
+const { mongoService } = require("../../utils/MongoService.js");
+const cryptoHelper = require("../../utils/cryptoHelper.js");
+const tokenService = require("../../utils/TokenService.js");
+const requestErrorHandler = require("../utils/requestErrorHandler.js");
 
-export default async (req, res, args) => {
+module.exports = async (req, res, args) => {
 
     try {
 
