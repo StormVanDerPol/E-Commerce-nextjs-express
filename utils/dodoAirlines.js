@@ -2,7 +2,7 @@ const Axios = require("axios");
 const localStorageService = require("./LocalStorageService");
 
 const port = process.env.PORT || 3000;
-const host = `http://localhost:${port}`;
+const host = `https://storm-nextjs-express-test.herokuapp.com:${port}`;
 
 const dodoTimeouts = {
     short: 10000,
