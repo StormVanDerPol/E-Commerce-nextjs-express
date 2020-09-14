@@ -3,6 +3,7 @@ import styles from '../styles/NotFound.module.css'
 import { useState } from 'react'
 import authService from '../utils/AuthService'
 import NavBar from '../components/NavBar'
+import Header from '../components/Header'
 
 export default function Signup() {
 
@@ -13,11 +14,10 @@ export default function Signup() {
 
     return (
         <div>
-            <Head>
+
+            <Header >
                 <title>Webshop name - sign up</title>
-                <link rel="icon" href="/favicon.ico" />
-                <meta httpEquiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' clusterfuck.l55h1.mongodb.net"></meta>
-            </Head>
+            </Header>
 
             <NavBar />
 

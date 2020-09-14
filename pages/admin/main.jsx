@@ -1,12 +1,13 @@
 import WithAuth from "../../components/WithAuth";
 import Head from "next/head";
+import Header from "../../components/Header";
 
 function Main() {
     return (
         <>
-            <Head>
-                <meta httpEquiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' clusterfuck.l55h1.mongodb.net"></meta>
-            </Head>
+            <Header>
+                <title>Admin panel - main</title>
+            </Header>
             <h1>Protected admin page</h1>
         </>
     )
