@@ -1,7 +1,7 @@
-import Head from 'next/head'
 import styles from '../styles/Products.module.css'
-import { dodoFlight, dodoRoutes, dodoTimeouts } from '../utils/dodoAirlines';
+import { dodoFlight, dodoTimeouts } from '../utils/dodoAirlines';
 import NavBar from '../components/NavBar';
+import Header from '../components/Header';
 
 function Products({ products = 'loading', success }) {
 
@@ -40,11 +40,9 @@ function Products({ products = 'loading', success }) {
 
     return (
         <div>
-            <Head>
-                <title>Webshop name - Products</title>
-                <link rel="icon" href="/favicon.ico" />
-                <meta httpEquiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' clusterfuck.l55h1.mongodb.net"></meta>
-            </Head>
+            <Header>
+                <title>Webshop name - products</title>
+            </Header>
 
             <NavBar />
 
@@ -68,7 +66,7 @@ function Products({ products = 'loading', success }) {
 Products.getInitialProps = async () => {
     const { data: { products, success } } = await dodoFlight({
         method: 'get',
-        url: dodoRoutes.api.v1.products,
+        url: `localhost:3000/api/v1/products`,
         timeout: dodoTimeouts.long,
     });
 

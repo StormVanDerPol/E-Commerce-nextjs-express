@@ -11,8 +11,6 @@ const numCPUs = require("os").cpus().length;
 
 const { default: next } = require("next");
 
-// console.log(process.env.NODE_ENV);
-
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
 

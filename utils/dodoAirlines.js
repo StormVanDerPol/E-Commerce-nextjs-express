@@ -1,8 +1,8 @@
 const Axios = require("axios");
 const localStorageService = require("./LocalStorageService");
 
-const port = process.env.PORT || 3000;
-const host = `https://storm-nextjs-express-test.herokuapp.com:${port}`;
+// const host = `https://storm-nextjs-express-test.herokuapp.com`;
+const host = ``;
 
 const dodoTimeouts = {
     short: 10000,
@@ -10,28 +10,9 @@ const dodoTimeouts = {
     long: 120000,
 }
 
-const dodoRoutes = ({
-
-    api: {
-        v1: {
-            products: host + '/api/v1/products',
-            login: host + '/api/v1/login',
-            signup: host + '/api/v1/signup',
-            me: host + '/api/v1/me',
-
-            admin: {
-                me: host + '/api/v1/admin/me',
-            },
-            user: {
-                me: host + '/api/v1/user/me',
-            },
-        },
-    },
-})
-
 const dodoFlight = async ({
-    method = 'get',
-    url = dodoRoutes.api.v1.get.products,
+    method,
+    url,
     timeout = dodoTimeouts.short,
     data = null,
     headers = null,
@@ -99,6 +80,5 @@ const dodoFlight = async ({
 
 module.exports = {
     dodoFlight,
-    dodoRoutes,
     dodoTimeouts,
 }
