@@ -66,7 +66,7 @@ function Products({ products = 'loading', success }) {
 Products.getInitialProps = async () => {
     const { data: { products, success } } = await dodoFlight({
         method: 'get',
-        url: `localhost:3000/api/v1/products`,
+        url: `http://localhost:3000/api/v1/products`, //bruh
         timeout: dodoTimeouts.long,
     });
 

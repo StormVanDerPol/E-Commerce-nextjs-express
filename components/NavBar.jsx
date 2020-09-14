@@ -1,6 +1,7 @@
 import authService from "../utils/AuthService";
 import { useEffect, useState } from "react";
 import localStorageService from "../utils/LocalStorageService";
+import Link from "next/link";
 
 const DropDown = ({ items = [], active = false, children }) => {
 
@@ -9,7 +10,7 @@ const DropDown = ({ items = [], active = false, children }) => {
             {items.map((item, i) => {
                 return <li className="dropdown-item" key={i}>
                     {
-                        (!item.onClick) ? <a className="dropdown-item-link" href={item.href}>{item.content}</a> :
+                        (!item.onClick) ? <Link className="dropdown-item-link" href={item.href}>{item.content}</Link> :
                             <span className="dropdown-item-link" onClick={item.onClick}>{item.content}</span>
                     }
                 </li>
@@ -63,10 +64,12 @@ const NavBar = () => {
         <nav>
             <ul className="menu">
                 <li className="menu-item">
-                    <a href="/">Home</a>
+                    {/* <a href="/">Home</a>*/}
+                    <Link href={"/"}>Home</Link>
                 </li>
                 <li className="menu-item">
-                    <a href="/products">Products</a>
+                    {/* <a href="/products">Products</a> */}
+                    <Link href={"/products"}>Products</Link>
                 </li>
                 <li className="menu-item">
                     <span>{(user.loggedIn) ? `welcome, ${user.username}` : 'Login/Signup'}</span>

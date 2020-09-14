@@ -4,6 +4,8 @@ import Redirect from '../pages/redirect';
 import localStorageService from '../utils/LocalStorageService';
 
 //WithAuth protects routes. Protected routes are only accessible with a valid token.
+
+//heeeelp
 const WithAuth = (AuthComponent, isAdmin) => {
 
     return class Authenticated extends Component {
@@ -43,7 +45,9 @@ const WithAuth = (AuthComponent, isAdmin) => {
                 }
 
             } else {
-                //if token is invalid, return forbidden
+                //if token is invalid, return forbidden & clear token
+                localStorageService.clear();
+                console.log('Token invalid!')
                 this.setState({
                     loading: false,
                     forbidden: true,

@@ -64,13 +64,7 @@ const dodoFlight = async ({
         //If error includes a response
         if (err.response) {
             console.log(err.response.data);
-
             const status = err.response.status;
-
-            if (status >= 400 && status < 500) {
-                localStorageService.remove('token');
-            }
-
             return err.response;
         }
 

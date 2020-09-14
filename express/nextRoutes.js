@@ -36,10 +36,10 @@ router.get('/admin/main', (req, res) => {
     return nextApp.render(req, res, '/admin/main', req.query);
 });
 
-// router.get('/forbidden', (req, res) => {
-//     const { nextApp } = req;
-//     return nextApp.render(req, res, '/procuts', req.query);
-// });
+router.get('/forbidden', (req, res) => {
+    const { nextApp } = req;
+    return nextApp.render(req, res, '/forbidden', req.query);
+});
 
 
 router.get('*', (req, res, next) => {
