@@ -21,7 +21,6 @@ const WithAuth = (AuthComponent, isAdmin) => {
 
         async componentDidMount() {
 
-
             try {
                 //Get user info, refreshes token.
                 const { data } = await dodoFlight({
@@ -63,32 +62,6 @@ const WithAuth = (AuthComponent, isAdmin) => {
                     forbidden: true,
                 })
             }
-
-            // if (res.data.success) {
-            //     //If our call succeeds (token is valid)
-            //     if (isAdmin) {
-            //         //is admin route
-            //         this.setState({
-            //             loading: false,
-            //             //Check if role is admin, if not, return forbidden
-            //             forbidden: (res.data.user.role === 'admin') ? false : true,
-            //         });
-            //     } else {
-            //         //!admin route
-            //         this.setState({
-            //             loading: false,
-            //         })
-            //     }
-
-            // } else {
-            //     //if token is invalid, return forbidden & clear token
-            //     localStorageService.clear();
-            //     console.log('Token invalid!')
-            //     this.setState({
-            //         loading: false,
-            //         forbidden: true,
-            //     });
-            // }
         }
 
         render() {

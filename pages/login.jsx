@@ -4,6 +4,8 @@ import { useState } from 'react'
 import authService from '../utils/AuthService'
 import NavBar from '../components/NavBar'
 import Header from '../components/Header'
+import Link from 'next/link'
+import { useRouter } from 'next/router';
 
 export default function Login() {
 
@@ -11,6 +13,9 @@ export default function Login() {
         username: '',
         password: '',
     })
+
+    const router = useRouter();
+    const query = router.query;
 
     return (
         <div>
@@ -36,8 +41,15 @@ export default function Login() {
                         password: target.value,
                     });
                 }} />
-                <button onClick={() => {
-                    authService.login(credentials);
+                <button onClick={async () => {
+                    const result = await authService.login(credentials);
+
+                    if (result === 'LOGIN_OK') {
+                        router.push(query.to || '/');
+                    }
+                    else {
+                        alert('Login failed')
+                    }
                 }}>Login</button>
             </main>
 
