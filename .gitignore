@@ -39,5 +39,6 @@ yarn-error.log*
 #keys
 # keys.js
 
-#pwa
-public/serviceWorker/*
+#Wack
+public/sw*
+public/workbox*
