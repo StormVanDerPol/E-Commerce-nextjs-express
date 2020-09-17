@@ -40,5 +40,5 @@ yarn-error.log*
 # keys.js
 
 #Wack
-static/sw*
-static/workbox*
+*sw*
+*workbox*

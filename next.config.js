@@ -4,6 +4,6 @@ const withPWA = require('next-pwa')
 module.exports = withPWA({
     useFileSystemPublicRoutes: false,
     pwa: {
-        dest: 'static',
+        dest: 'public',
     }
 });
