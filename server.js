@@ -32,6 +32,7 @@ if (!dev && cluster.isMaster) {
     const nextHandler = nextApp.getRequestHandler();
 
     nextApp.prepare().then(() => {
+
         const app = express();
 
         app.use(cors({
@@ -50,7 +51,7 @@ if (!dev && cluster.isMaster) {
         })
 
         //serving static files
-        app.use('/static', express.static('public'));
+        app.use('/static', express.static('static'));
         app.use('/_next/static', express.static('_next/static'));
 
         //Api routes

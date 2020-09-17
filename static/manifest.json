@@ -2,6 +2,7 @@
     "name": "WPA",
     "short_name": "WPA",
     "lang": "nl-NL",
+    "scope": "/",
     "start_url": "/",
     "display": "standalone",
     "theme_color": "#ffffff",
