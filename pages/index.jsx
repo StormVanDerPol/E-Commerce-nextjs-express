@@ -6,21 +6,25 @@ import { useEffect } from 'react'
 
 export default function Home() {
 
-  useEffect(() => {
-    (async () => {
-      if ("serviceWorker" in navigator) {
-        try {
-          navigator.serviceWorker.register("../static/serviceWorker.js", {
-            scope: '/',
-          });
-        } catch (error) {
-          console.error("Service worker registration failed", err);
-        }
-      } else {
-        console.log("Service worker unsupported")
-      }
-    })();
-  }, [])
+  // useEffect(() => {
+  //   (async () => {
+  //     if ("serviceWorker" in navigator) {
+  //       try {
+
+  //         // const registrations = await navigator.serviceWorker.getRegistrations();
+  //         // console.log(registrations);
+
+  //         navigator.serviceWorker.register("../static/serviceWorker.js", {
+  //           scope: '/',
+  //         });
+  //       } catch (error) {
+  //         console.error("Service worker registration failed", err);
+  //       }
+  //     } else {
+  //       console.log("Service worker unsupported")
+  //     }
+  //   })();
+  // }, []);
 
   return (
     <div>

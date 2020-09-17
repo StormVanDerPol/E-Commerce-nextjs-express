@@ -51,6 +51,7 @@ if (!dev && cluster.isMaster) {
 
         //serving static files
         app.use('/static', express.static('public'));
+        app.use('/_next/static', express.static('_next/static'));
 
         //Api routes
         app.use('/api/v1', apiRoutes);

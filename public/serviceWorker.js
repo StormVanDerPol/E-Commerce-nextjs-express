@@ -1,5 +1,10 @@
-const CACHE_NAME = "simple-cache-v1";
-const urlsToCache = ["/, /login, /signup, /not-found, /forbidden, /redirect, /admin/main"];
+const CACHE_NAME = "hijo";
+const urlsToCache = [
+    "/",
+    // "/_next/static/main.js?ts=1600373744264",
+    "/static/manifest.json",
+    "/static/favicon.ico",
+];
 
 self.addEventListener("install", event => {
     const preLoaded = caches.open(CACHE_NAME)
