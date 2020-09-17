@@ -1,15 +1,24 @@
 import authService from "../utils/AuthService";
 import { useEffect, useState } from "react";
 import localStorageService from "../utils/LocalStorageService";
+import Link from "next/link";
 
-const DropDown = ({ items = [], active = false, children }) => {
+const DropDown = ({ items = [], title, initActive = false, children }) => {
+
+    const [active, setActive] = useState(initActive);
 
     return (
         <ul className={`dropdown${(active) ? "--active" : ''}`}>
+
+            {/* <li onClick={() => {
+
+            }}>{title}</li> */}
+
             {items.map((item, i) => {
+
                 return <li className="dropdown-item" key={i}>
                     {
-                        (!item.onClick) ? <a className="dropdown-item-link" href={item.href}>{item.content}</a> :
+                        (!item.onClick) ? <Link className="dropdown-item-link" href={item.href}>{item.content}</Link> :
                             <span className="dropdown-item-link" onClick={item.onClick}>{item.content}</span>
                     }
                 </li>
@@ -54,8 +63,8 @@ const NavBar = () => {
         ];
     } else {
         userDropDownSet = [
-            { content: 'Login', href: '/login' },
-            { content: 'Sign-up', href: '/signup' },
+            { content: 'Login', href: '/login?to=/' },
+            { content: 'Sign-up', href: '/signup?to=/' },
         ];
     }
 
@@ -63,10 +72,10 @@ const NavBar = () => {
         <nav>
             <ul className="menu">
                 <li className="menu-item">
-                    <a href="/">Home</a>
+                    <Link href={"/"}>Home</Link>
                 </li>
                 <li className="menu-item">
-                    <a href="/products">Products</a>
+                    <Link href={"/products"}>Products</Link>
                 </li>
                 <li className="menu-item">
                     <span>{(user.loggedIn) ? `welcome, ${user.username}` : 'Login/Signup'}</span>
