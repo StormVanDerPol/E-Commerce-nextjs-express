@@ -63,10 +63,11 @@ function Products({ products = 'loading', success }) {
 
 
 //Load products server-side for crawlers
-Products.getInitialProps = async () => {
+Products.getInitialProps = async ({ req }) => {
+
     const { data: { products, success } } = await dodoFlight({
         method: 'get',
-        url: `http://localhost:3000/api/v1/products`, //bruh
+        url: `http://${req.headers.host}/api/v1/products`,
         timeout: dodoTimeouts.long,
     });
 

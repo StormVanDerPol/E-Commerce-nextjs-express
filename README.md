@@ -1,6 +1,6 @@
 ##  E-Commerce template thing
 
-The goal of this project is to set up a barebones webshop with okay SEO using Nextjs, MongoDB and Express for the API.
+The goal of this self study project is to set up a barebones webshop with okay SEO using Nextjs, MongoDB and Express for the API.
 
 Platform should include a proper Admin panel and the neccessary security measures an E-Commerce platform should have.
 
@@ -10,8 +10,13 @@ Running the dev server:
 ```npm run dev```
 
 Running the Express instance:
-```npm run express``` 
+```npm run express```
 
+## big issues:
+- Automatically fetching the proper URL to peform server-side http requests in the nextjs app (during )
+
+## Heroku App (Master branch)
+https://storm-nextjs-express-test.herokuapp.com/
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

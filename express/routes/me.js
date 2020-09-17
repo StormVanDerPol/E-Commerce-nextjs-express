@@ -19,8 +19,6 @@ module.exports = async (req, res) => {
 
         const result = await cursor.toArray();
 
-        console.log(result);
-
         client.close();
 
         res.status(200).send({

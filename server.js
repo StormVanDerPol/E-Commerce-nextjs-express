@@ -39,7 +39,7 @@ if (!dev && cluster.isMaster) {
         app.use(cors({
             credentials: true,
             exposedHeaders: [
-                'authorization'
+                'authorization',
             ]
         }));
         app.use(bodyParser.json({ limit: "50mb" }));
@@ -58,11 +58,6 @@ if (!dev && cluster.isMaster) {
         });
 
         app.use('/', nextRoutes);
-
-
-        app.get('/productsnext', (req, res) => {
-            return nextApp.render(req, res, '/signup', req.query);
-        });
 
         app.listen(port, (err) => {
             if (err) throw err;
