@@ -1,8 +1,11 @@
-import Head from 'next/head'
 import styles from '../styles/Products.module.css'
-import { dodoFlight, dodoRoutes, dodoTimeouts } from '../utils/dodoAirlines';
+import { dodoFlight, dodoTimeouts } from '../utils/dodoAirlines';
 import NavBar from '../components/NavBar';
+<<<<<<< HEAD
 import SecurityHeaders from '../components/SecurityHeaders';
+=======
+import Header from '../components/Header';
+>>>>>>> 163f3c0abe8445513658ea2a81c1b1502e3d795b
 
 function Products({ products = 'loading', success }) {
 
@@ -41,11 +44,17 @@ function Products({ products = 'loading', success }) {
 
     return (
         <div>
+<<<<<<< HEAD
             <Head>
                 <title>Webshop name - Products</title>
                 <link rel="icon" href="/favicon.ico" />
                 <SecurityHeaders />
             </Head>
+=======
+            <Header>
+                <title>Webshop name - products</title>
+            </Header>
+>>>>>>> 163f3c0abe8445513658ea2a81c1b1502e3d795b
 
             <NavBar />
 
@@ -69,7 +78,7 @@ function Products({ products = 'loading', success }) {
 Products.getInitialProps = async () => {
     const { data: { products, success } } = await dodoFlight({
         method: 'get',
-        url: dodoRoutes.api.v1.products,
+        url: `localhost:3000/api/v1/products`,
         timeout: dodoTimeouts.long,
     });
 

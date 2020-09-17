@@ -1,4 +1,4 @@
-const { dodoFlight, dodoRoutes, dodoTimeouts } = require("./dodoAirlines")
+const { dodoFlight, dodoTimeouts } = require("./dodoAirlines")
 const localStorageService = require("./LocalStorageService.js");
 
 //Due for refactoring
@@ -11,7 +11,7 @@ const authService = {
         try {
             const { data: { success: loginSuccess }, headers: { authorization: token } } = await dodoFlight({
                 method: 'post',
-                url: dodoRoutes.api.v1.login,
+                url: `${location.origin}/api/v1/login`,
                 data: {
                     username,
                     password,
@@ -27,7 +27,7 @@ const authService = {
 
                     const { data: { user, success: meSuccess } } = await dodoFlight({
                         method: 'get',
-                        url: dodoRoutes.api.v1.user.me,
+                        url: `${location.origin}/api/v1/user/me`,
                         timeout: dodoTimeouts.short,
                         token,
                     });
@@ -60,7 +60,7 @@ const authService = {
     signup: async ({ username, password }) => {
         const res = await dodoFlight({
             method: 'post',
-            url: dodoRoutes.api.v1.signup,
+            url: `${location.origin}/api/v1/signup`,
             data: {
                 username,
                 password,

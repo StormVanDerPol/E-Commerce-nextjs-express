@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import styles from '../styles/NotFound.module.css'
 import NavBar from '../components/NavBar'
+import Header from '../components/Header'
 
 export default function NotFound() {
   return (
     <div>
-      <Head>
+      <Header>
         <title>Webshop name - not found</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Header>
 
       <NavBar />
 

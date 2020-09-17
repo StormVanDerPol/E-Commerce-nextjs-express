@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { dodoFlight, dodoRoutes, dodoTimeouts } from '../utils/dodoAirlines';
+import { dodoFlight, dodoTimeouts } from '../utils/dodoAirlines';
 import Redirect from '../pages/redirect';
 import localStorageService from '../utils/LocalStorageService';
 
@@ -21,7 +21,7 @@ const WithAuth = (AuthComponent, isAdmin) => {
             //Get user info, refreshes token.
             const res = await dodoFlight({
                 method: 'get',
-                url: dodoRoutes.api.v1.admin.me,
+                url: `${location.origin}/api/v1/admin/me`,
                 timeout: dodoTimeouts.short,
                 token: localStorageService.get('token'),
             });
