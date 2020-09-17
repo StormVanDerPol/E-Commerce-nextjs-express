@@ -1,11 +1,7 @@
 import styles from '../styles/Products.module.css'
 import { dodoFlight, dodoTimeouts } from '../utils/dodoAirlines';
 import NavBar from '../components/NavBar';
-<<<<<<< HEAD
-import SecurityHeaders from '../components/SecurityHeaders';
-=======
 import Header from '../components/Header';
->>>>>>> 163f3c0abe8445513658ea2a81c1b1502e3d795b
 
 function Products({ products = 'loading', success }) {
 
@@ -44,17 +40,9 @@ function Products({ products = 'loading', success }) {
 
     return (
         <div>
-<<<<<<< HEAD
-            <Head>
-                <title>Webshop name - Products</title>
-                <link rel="icon" href="/favicon.ico" />
-                <SecurityHeaders />
-            </Head>
-=======
             <Header>
                 <title>Webshop name - products</title>
             </Header>
->>>>>>> 163f3c0abe8445513658ea2a81c1b1502e3d795b
 
             <NavBar />
 
@@ -75,10 +63,11 @@ function Products({ products = 'loading', success }) {
 
 
 //Load products server-side for crawlers
-Products.getInitialProps = async () => {
+Products.getInitialProps = async ({ req }) => {
+
     const { data: { products, success } } = await dodoFlight({
         method: 'get',
-        url: `localhost:3000/api/v1/products`,
+        url: `http://${req.headers.host}/api/v1/products`,
         timeout: dodoTimeouts.long,
     });
 

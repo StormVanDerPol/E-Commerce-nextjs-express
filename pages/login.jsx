@@ -3,11 +3,7 @@ import styles from '../styles/NotFound.module.css'
 import { useState } from 'react'
 import authService from '../utils/AuthService'
 import NavBar from '../components/NavBar'
-<<<<<<< HEAD
-import SecurityHeaders from '../components/SecurityHeaders'
-=======
 import Header from '../components/Header'
->>>>>>> 163f3c0abe8445513658ea2a81c1b1502e3d795b
 
 export default function Login() {
 
@@ -20,13 +16,7 @@ export default function Login() {
         <div>
             <Header>
                 <title>Webshop name - login</title>
-<<<<<<< HEAD
-                <link rel="icon" href="/favicon.ico" />
-                <SecurityHeaders />
-            </Head>
-=======
             </Header>
->>>>>>> 163f3c0abe8445513658ea2a81c1b1502e3d795b
 
             <NavBar />
 
