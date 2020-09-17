@@ -38,3 +38,7 @@ yarn-error.log*
 
 #keys
 # keys.js
+
+#Wack
+*sw*
+*workbox*

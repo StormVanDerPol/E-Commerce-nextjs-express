@@ -1,9 +1,6 @@
 const Axios = require("axios");
 const localStorageService = require("./LocalStorageService");
 
-// const host = `https://storm-nextjs-express-test.herokuapp.com`;
-const host = ``;
-
 const dodoTimeouts = {
     short: 10000,
     medium: 50000,
@@ -43,7 +40,7 @@ const dodoFlight = async ({
         //Logging
         console.log('Landed!', response);
 
-        //Getting token  = require(header
+        //Getting token from header
         const token = response.headers.authorization;
 
         //Setting new token (Only request where document has already been defined will update the token)
@@ -65,6 +62,11 @@ const dodoFlight = async ({
         if (err.response) {
             console.log(err.response.data);
             const status = err.response.status;
+
+            if (err.response.data.message === 'TOKEN EXPIRED') {
+                localStorageService.remove('token');
+            }
+
             return err.response;
         }
 

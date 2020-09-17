@@ -27,7 +27,7 @@ const authService = {
 
                     const { data: { user, success: meSuccess } } = await dodoFlight({
                         method: 'get',
-                        url: `${location.origin}/api/v1/user/me`,
+                        url: `${location.origin}/api/v1/me`,
                         timeout: dodoTimeouts.short,
                         token,
                     });

@@ -2,14 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
-const setCSP = (req, res, next) => {
-
-    res.setHeader("Content-Security-Policy", "default-src *;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests")
-
+router.use((req, res, next) => {
+    res.setHeader(
+        "Content-Security-Policy",
+        "default-src *;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+    );
     next();
-}
-
-router.use(setCSP);
+});
 
 router.get('/', (req, res) => {
     const { nextApp } = req;

@@ -2,10 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
-const userRoutes = require("./express/userRoutes.js");
-const adminRoutes = require("./express/adminRoutes.js");
 const nextRoutes = require("./express/nextRoutes.js");
-const routes = require("./express/routes.js");
+const apiRoutes = require("./express/apiRoutes.js");
 const cluster = require("cluster");
 const numCPUs = require("os").cpus().length;
 
@@ -34,6 +32,7 @@ if (!dev && cluster.isMaster) {
     const nextHandler = nextApp.getRequestHandler();
 
     nextApp.prepare().then(() => {
+
         const app = express();
 
         app.use(cors({
@@ -46,9 +45,16 @@ if (!dev && cluster.isMaster) {
         app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
         app.use(helmet());
 
-        app.use('/api/v1/user', userRoutes);
-        app.use('/api/v1/admin', adminRoutes);
-        app.use('/api/v1', routes);
+        app.use((req, res, next) => {
+            res.setHeader('Service-Worker-Allowed', '/');
+            next();
+        })
+
+        //serving static files
+        app.use('/public', express.static('static'));
+
+        //Api routes
+        app.use('/api/v1', apiRoutes);
 
         //Middleware that binds nextApp and nextHandler to req to access it from nextRoutes.
         app.use('/', (req, res, next) => {

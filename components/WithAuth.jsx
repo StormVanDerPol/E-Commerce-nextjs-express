@@ -20,28 +20,24 @@ const WithAuth = (AuthComponent, isAdmin) => {
         }
 
         async componentDidMount() {
+          
+            //Get user info, refreshes token.
+            const res = await dodoFlight({
+                method: 'get',
+                url: `${location.origin}/api/v1/admin`,
+                timeout: dodoTimeouts.short,
+                token: localStorageService.get('token'),
+            });
 
-            try {
-                //Get user info, refreshes token.
-                const { data } = await dodoFlight({
-                    method: 'get',
-                    url: `${location.origin}/api/v1/admin/me`,
-                    timeout: dodoTimeouts.short,
-                    token: localStorageService.get('token'),
-                });
-
-                if (data.success) {
-
-                    if (isAdmin) {
-                        this.setState({
-                            loading: false,
-                            forbidden: (data.user.role === 'admin') ? false : true,
-                        });
-                    } else {
-                        this.setState({
-                            loading: false,
-                        })
-                    }
+            if (res.data.success) {
+                //If our call succeeds (token is valid)
+                if (isAdmin) {
+                    //is admin route
+                    this.setState({
+                        loading: false,
+                        //Check if role is admin, if not, return forbidden
+                        forbidden: (res.data.user.role === 'admin') ? false : true,
+                    });
                 } else {
                     if (data.message === 'TOKEN EXPIRED') {
                         localStorageService.clear();
