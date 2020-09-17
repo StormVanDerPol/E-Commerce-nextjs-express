@@ -15,8 +15,8 @@ const AppRouter = ({ Component, pageProps }) => {
 
     //Redirecting 404s
     if (router.pathname.startsWith("/_error")) {
-        const route = (router.asPath.startsWith('/api')) ? '/not-found-api' : '/not-found';
-        return <Redirect to={route} />
+        // const route = (router.asPath.startsWith('/api')) ? '/not-found-api' : '/not-found';
+        return <Redirect to={'not-found'} />
     }
 
     return <Component {...pageProps} />

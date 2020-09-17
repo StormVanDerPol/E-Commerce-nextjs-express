@@ -4,6 +4,8 @@ import Redirect from '../pages/redirect';
 import localStorageService from '../utils/LocalStorageService';
 
 //WithAuth protects routes. Protected routes are only accessible with a valid token.
+
+//heeeelp
 const WithAuth = (AuthComponent, isAdmin) => {
 
     return class Authenticated extends Component {
@@ -18,6 +20,7 @@ const WithAuth = (AuthComponent, isAdmin) => {
         }
 
         async componentDidMount() {
+          
             //Get user info, refreshes token.
             const res = await dodoFlight({
                 method: 'get',
@@ -36,18 +39,24 @@ const WithAuth = (AuthComponent, isAdmin) => {
                         forbidden: (res.data.user.role === 'admin') ? false : true,
                     });
                 } else {
-                    //!admin route
+                    if (data.message === 'TOKEN EXPIRED') {
+                        localStorageService.clear();
+                    }
+
                     this.setState({
                         loading: false,
+                        forbidden: true,
                     })
                 }
 
-            } else {
-                //if token is invalid, return forbidden
+            } catch (err) {
+
+                console.log('unhandled')
+
                 this.setState({
                     loading: false,
                     forbidden: true,
-                });
+                })
             }
         }
 
