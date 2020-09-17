@@ -1,0 +1,16 @@
+{
+    "name": "WPA",
+    "short_name": "WPA",
+    "lang": "nl-NL",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

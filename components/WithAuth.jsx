@@ -21,7 +21,7 @@ const WithAuth = (AuthComponent, isAdmin) => {
             //Get user info, refreshes token.
             const res = await dodoFlight({
                 method: 'get',
-                url: `${location.origin}/api/v1/admin/me`,
+                url: `${location.origin}/api/v1/admin`,
                 timeout: dodoTimeouts.short,
                 token: localStorageService.get('token'),
             });
