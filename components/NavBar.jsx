@@ -3,35 +3,48 @@ import { useEffect, useState } from "react";
 import localStorageService from "../utils/LocalStorageService";
 import Link from "next/link";
 
-const DropDown = ({ items = [], title, initActive = false, children }) => {
+import styles from '../styles/NavBar.module.css';
 
-    const [active, setActive] = useState(initActive);
+const DropDown = ({ title, active: _active = false, children }) => {
+
+    //init set active to active boolean from props
+    const [active, setActive] = useState(_active);
+
+    //Make sure both 'active' state and prop remain consistent
+    useEffect(() => {
+        _active = active;
+    }, [active])
 
     return (
-        <ul className={`dropdown${(active) ? "--active" : ''}`}>
-
-            {/* <li onClick={() => {
-
-            }}>{title}</li> */}
-
-            {items.map((item, i) => {
-
-                return <li className="dropdown-item" key={i}>
-                    {
-                        (!item.onClick) ? <Link className="dropdown-item-link" href={item.href}>{item.content}</Link> :
-                            <span className="dropdown-item-link" onClick={item.onClick}>{item.content}</span>
-                    }
-                </li>
-            })}
-            {children}
-        </ul>
+        <span className={styles.dropDown}>
+            <span className={styles.dropDownTitle}
+                onClick={() => {
+                    setActive((active) ? false : true);
+                }}
+            >
+                {title}
+            </span>
+            <span
+                className={(active) ? styles.dropDownContent : `${styles.dropDownContent} ${styles.dropDownContent_hidden}`}
+            >
+                {children}
+            </span>
+        </span>
     );
 }
 
-const Cart = ({ active = false }) => {
+const Cart = ({ active: _active = false }) => {
+
+    const [active, setActive] = useState(_active);
+
     return (
-        <div className={`cart${(active) ? "--active" : ''}`}>
-            its cart xD
+        <div className={styles.cart}>
+            <span onClick={() => { setActive((active) ? false : true); }}>
+                Cart
+            </span>
+            <div className={(active) ? styles.cartContent : styles.cartContent_hidden}>
+                its cart xD
+            </div>
         </div>
     )
 }
@@ -56,33 +69,33 @@ const NavBar = () => {
     var userDropDownSet = [];
 
     if (user.loggedIn) {
-        userDropDownSet = [
-            { content: 'Profile', href: '/profile' },
-            { content: 'Orders', href: '/orders' },
-            { content: 'Logout', onClick: authService.logout },
-        ];
+        userDropDownSet = <>
+            <li className={styles.dropDownItem}><Link href={"/profile"}>Profile</Link></li>
+            <li className={styles.dropDownItem}><Link href={"/orders"}>Orders</Link></li>
+            <li className={styles.dropDownItem}><span onClick={authService.logout}>Logout</span></li>
+        </>
     } else {
-        userDropDownSet = [
-            { content: 'Login', href: '/login?to=/' },
-            { content: 'Sign-up', href: '/signup?to=/' },
-        ];
+        userDropDownSet = <>
+            <li className={styles.dropDownItem}><Link href={"/login?to=/"}>Login</Link></li>
+            <li className={styles.dropDownItem}><Link href={"/signup?to=/"}>Sign-up</Link></li>
+        </>
     }
 
     return (
         <nav>
-            <ul className="menu">
-                <li className="menu-item">
+            <ul className={styles.menu}>
+                <li className={styles.menuItem}>
                     <Link href={"/"}>Home</Link>
                 </li>
-                <li className="menu-item">
+                <li className={styles.menuItem}>
                     <Link href={"/products"}>Products</Link>
                 </li>
-                <li className="menu-item">
-                    <span>{(user.loggedIn) ? `welcome, ${user.username}` : 'Login/Signup'}</span>
-                    <DropDown items={userDropDownSet} />
+                <li className={styles.menuItem}>
+                    <DropDown title={(user.loggedIn) ? `welcome, ${user.username}` : 'Login/Signup'} >
+                        {userDropDownSet}
+                    </DropDown>
                 </li>
-                <li className="menu-item">
-                    <span>Cart</span>
+                <li className={styles.menuItem}>
                     <Cart />
                 </li>
             </ul>

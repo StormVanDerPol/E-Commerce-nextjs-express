@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 const keys = require('../keys.js');
 
-//Due for refactoring
-
 class TokenService {
 
     create = (payload, options = {}) => {

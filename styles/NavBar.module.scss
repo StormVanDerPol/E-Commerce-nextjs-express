@@ -1,0 +1,107 @@
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin toBoundary {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin hidden {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+@mixin selectable {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+@mixin noSelect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.noSelect {
+    @include noSelect();
+}
+
+$navHeight: 4rem;
+
+.menu {
+    @include flexCenter();
+    @include noSelect();
+
+    // border: solid green 1px;
+    height: $navHeight;
+
+    &Item {
+        @include flexCenter();
+
+        // border: solid black 1px;
+        height: 100%;
+        min-width: 6rem;
+        padding: 0 1rem;
+        list-style: none;
+        margin: 0 2rem /* 32/16 */;
+    }
+}
+
+.dropDown {
+    @include flexCenter();
+    @include toBoundary();
+
+    // width: 8rem;
+
+    &Title {
+        @include selectable();
+    }
+
+    position: relative;
+    // border: solid red 1px;
+
+    &Content {
+        // border: solid blue 1px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: $navHeight;
+
+        transition: opacity 0.5s ease-in-out;
+        opacity: 1;
+
+        &_hidden {
+            @include hidden();
+            opacity: 0;
+        }
+    }
+
+    &Item {
+        @include selectable();
+        padding: 0.25rem;
+        list-style: none;
+    }
+}
+
+.cart {
+    &Content {
+        &_hidden {
+            display: none;
+        }
+    }
+}

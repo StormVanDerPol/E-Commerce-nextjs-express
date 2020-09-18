@@ -2,41 +2,9 @@ import styles from '../styles/Products.module.css'
 import { dodoFlight, dodoTimeouts } from '../utils/dodoAirlines';
 import NavBar from '../components/NavBar';
 import Header from '../components/Header';
+import { useEffect, useState } from 'react';
 
-function Products({ products = 'loading', success }) {
-
-    //Hardcoded variables
-    const region = 'us';
-    const currency = (region === 'eu') ? '€' : '$';
-
-    const loadingProducts = (products === 'loading');
-
-    const ProductList = () => {
-        if (!success) {
-
-            return <p>Error</p>
-
-        } else if (loadingProducts) {
-
-            return <p>Loading...</p>
-
-        } else if (products.length === 0) {
-
-            return <p>No products found!</p>
-
-        } else {
-
-            return products.map((item, i) => {
-                return <div key={i} >
-                    <ul>
-                        <li>{item.name}</li>
-                        <li>{item.prices[region]}{currency} - {item.discounts[region] * 100}% = {(item.prices[region] - item.prices[region] * item.discounts[region]).toFixed(2)}{currency}</li>
-                    </ul>
-                </div>
-            });
-
-        }
-    }
+function Products() {
 
     return (
         <div>
@@ -50,9 +18,7 @@ function Products({ products = 'loading', success }) {
                 <h1>
                     List products
                 </h1>
-
                 <ProductList />
-
             </main>
 
             <footer>
@@ -61,17 +27,42 @@ function Products({ products = 'loading', success }) {
     )
 }
 
+const ProductList = () => {
 
-//Load products server-side for crawlers
-Products.getInitialProps = async ({ req }) => {
+    //Hardcoded variables
+    const region = 'eu';
+    const currency = (region === 'eu') ? '€' : '$';
 
-    const { data: { products, success } } = await dodoFlight({
-        method: 'get',
-        url: `http://${req.headers.host}/api/v1/products`,
-        timeout: dodoTimeouts.long,
-    });
+    const [products, setProducts] = useState('loading')
 
-    return { products, success };
+    useEffect(() => {
+        (async () => {
+
+            const { data } = await dodoFlight({
+                method: 'get',
+                url: `${location.origin}/api/v1/products`,
+                timeout: dodoTimeouts.long,
+            });
+
+            setProducts(data.products);
+
+        })();
+    }, [])
+
+    if (products === 'loading') {
+        return <p>Loading...</p>
+    } else if (products.length == 0) {
+        return <p>No products found!</p>
+    } else {
+        return products.map((item, i) => {
+            return <div key={i} >
+                <ul>
+                    <li>{item.name}</li>
+                    <li>{item.prices[region]}{currency} - {item.discounts[region] * 100}% = {(item.prices[region] - item.prices[region] * item.discounts[region]).toFixed(2)}{currency}</li>
+                </ul>
+            </div>
+        });
+    }
 }
 
 export default Products;
