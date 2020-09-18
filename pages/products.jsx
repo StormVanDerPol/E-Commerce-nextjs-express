@@ -38,21 +38,29 @@ const ProductList = () => {
     useEffect(() => {
         (async () => {
 
-            const { data } = await dodoFlight({
+            const response = await dodoFlight({
                 method: 'get',
                 url: `${location.origin}/api/v1/products`,
                 timeout: dodoTimeouts.long,
             });
 
-            setProducts(data.products);
+            setProducts((response) ? response.data.products : 'NO CONNECTION');
 
         })();
     }, [])
 
     if (products === 'loading') {
+
         return <p>Loading...</p>
+
+    } else if (products === 'NO CONNECTION') {
+
+        return <p>No connection</p>
+
     } else if (products.length == 0) {
+
         return <p>No products found!</p>
+
     } else {
         return products.map((item, i) => {
             return <div key={i} >
