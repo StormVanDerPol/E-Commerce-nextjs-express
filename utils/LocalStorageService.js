@@ -28,8 +28,6 @@ class LocalStorageService {
                 items.push(window.localStorage.getItem(key));
             }
         };
-
-        console.log(items);
         return items;
     };
 

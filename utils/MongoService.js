@@ -26,11 +26,8 @@ const initMongoService = (url, database) => {
 
     return new MongoService(url, database);
 }
-//5A8hIquBWLmwvXm7
-//<username>:<password>@clusterfuck.l55h1.mongodb.net/<dbname>?retryWrites=true&w=majority
-///ecommerce?retryWrites=true&w=majority
+
 const mongoService = initMongoService("mongodb+srv://user:5A8hIquBWLmwvXm7@clusterfuck.l55h1.mongodb.net?retryWrites=true&w=majority", "ecommerce");
-// const mongoService = initMongoService("mongodb://superuser:user@localhost:27017", "nextjs");
 
 module.exports = {
     initMongoService,
